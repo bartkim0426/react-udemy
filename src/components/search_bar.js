@@ -33,13 +33,20 @@ class SearchBar extends Component {
 		// this.state.item, only use setState
 		// using on 참조 is possible
 		return (
-			<div>
+			<div className="search-bar">
 				<input 
 					value={this.state.term}
-					onChange={ event => this.setState({ term: event.target.value })}/>
+					onChange={ event => this.onInputChange(event.target.value)}/>
 			</div>
 		);
 	};
+
+	onInputChange(term) {
+		// set term value
+		this.setState({term});
+		// callback
+		this.props.onSearchTermChange(term);
+	}
 	// react의 데이터 관리
 	// input의 value가 바뀔 필요가 없음. 쉽게 input값을 읽을 수 있게 해줌
 
